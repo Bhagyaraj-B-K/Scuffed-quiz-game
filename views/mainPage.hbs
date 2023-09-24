@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .main_header {
+        
+            padding: 10px;
+            background-color: #9fa8a3;
+        }
+
+        .nav_bar{
+            margin-left: 55%;
+            padding: 5px;
+        }
+
+        .main_head {
+            margin-left: 5%;
+        }
+
+        .nav_button {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color:grey;
+            text-decoration-line: none;
+            font-size: large;
+            text-decoration-color: azure;
+        }
+
+        .startgame {
+            text-decoration: none;
+            text-decoration-line: none;
+        }
+
+        .startgamehead {
+            text-align: center;
+        }
+
+        .score_display_div {
+            font-style: oblique;
+            margin-left: 81%;
+        }
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <header class="main_header">
+        <nav class="nav_bar">
+            <a class="nav_button" id="admin-button" href='/admin/home'>Admin</a>
+            <a class="nav_button" href='/chat'>Chat</a>
+            <a class="nav_button" href='/user/search-player'>Search Player</a>
+            <a class="nav_button" href='/user/friends'>Friends</a>
+            <a class="nav_button" href='/user/friend-requests'>Friend Requests</a>
+            <a class="nav_button" href='/user/profile'>Profile</a>
+            <a class="nav_button" href='/leaderboard'>Leaderboard</a>
+            <a class="nav_button" href='/user/logout'>Logout</a>
+        </nav>
+        <h2 class="main_head">Quiz Game</h2>
+        <ul class="score_display_div">
+        <li><span class="score_display">Username: {{username}}</span></li>
+        <li><span class="score_display">Level: {{level}}</span></li>
+        <li><span class="score_display">XP: {{xp}}</span></li>
+        </ul>
+    </header>   
+
+    <h1 class="startgamehead"><a href="/quiz" class="startgame">START GAME!</a></h1>
+</body>
+<script>
+        var admin = {{admin}}
+        console.log(admin === 0)
+        if(admin === 0) {
+            document.getElementById("admin-button").style.visibility = "hidden";
+        }
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Questions</title>
+</head>
+<body>
+    <form method="POST" action="/admin/add-question" autocomplete="off" class="form-container">
+            <h2>Add Question</h2>
+
+            <label for="question">Question:</label>
+            <input type="text" name="question" id="question" required/><br><br>
+            <label for="optiona">Option A:</label>
+            <input type="text" name="optiona" id="optiona" required/><br>
+            <label for="optionb">Option B:</label>
+            <input type="text" name="optionb" id="optionb" required/><br>
+            <label for="optionc">Option C:</label>
+            <input type="text" name="optionc" id="optionc" required/><br>
+            <label for="optiond">Option D:</label>
+            <input type="text" name="optiond" id="optiond" required/><br><br>
+            <label for="optiond">Answer:</label>
+            <select name="answer" id="answer" aria-label="Default select example" required>
+            <option value="" >select</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+            </select><br><br>
+            <label for="optiond">Level: </label>
+            <select name="level" id="level" aria-label="Default select example" required>
+            <option value="" >select</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+            </select><br><br>
+            <input type="submit" value="Upload Question">
+    </form>
+    <br><br><p>{{msg}}</p>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Request Page</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid;
+        text-align: center;
+    }
+    th {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        padding: 5px;
+    }
+    td {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        padding: 5px;
+    }
+    table {
+        width: 100%
+    }
+
+    .update_button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    .block_button {
+        background-color: #f44336; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    .addFriend {
+        display: none;
+    }
+
+    .cancelRequest {
+        display: none;
+    }
+</style>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <th><h2>Name</h2></th>
+                <th><h2>Email</h2></th>
+                <th><h2>Age</h2></th>
+                <th><h2>Gender</h2></th>
+                <th><h2>Level</h2></th>
+                <th><h2>XP</h2></th>
+            </tr>
+            {{#each users}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.email_id}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.xp}}</td>
+                <td>
+                    
+                    <form class="confirmFriend" id="confirmFriend{{@index}}" name="confirmFriend{{@index}}" method="post" action="/user/confirm-friend">
+                        <input type="hidden" id="user_id" name="user_id" value="{{this.user_id}}">
+                        <input type="hidden" id="urlConfirm" name="url" value="/user/friend-requests">
+                        <input type="hidden" id="username{{@index}}" name="username" value={{username}}>
+                        <button type="submit" class="friend-button" onclick="searchResAdd('{{@index}}')">Confirm</button>
+                    </form>
+                
+                    <form class="rejectRequest" id="rejectRequest{{@index}}" name="rejectRequest{{@index}}" method="post" action="/user/reject-request">
+                        <input type="hidden" id="user_id" name="user_id" value="{{this.user_id}}">
+                        <input type="hidden" id="urlRemove" name="url" value="/user/friend-requests">
+                        <input type="hidden" id="usernameC{{@index}}" name="username" value={{username}}>
+                        <button type="submit" class="friend-button" onclick="searchResCancel('{{@index}}')">Reject</button>
+                    </form>
+                   
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+<script>
+    function searchResAdd( i ){
+        document.getElementById('username'+i).value = "{{username}}"
+    }   
+    function searchResCancel( i ){
+        document.getElementById('usernameC'+i).value = "{{username}}"
+    }  
+
+</script>
+</html>

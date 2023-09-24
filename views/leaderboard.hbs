@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid;
+        text-align: center;
+    }
+    th {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        padding: 10px;
+    }
+    td {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        padding: 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .details_button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <th><h2>#</h2></th>
+                <th><h2>Name</h2></th>
+                <th><h2>Level</h2></th>
+                <th><h2>XP</h2></th>
+            </tr>
+            {{#each users}}
+            <tr>
+                <td>{{@index}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.xp}}</td>
+                <td><form method="post" action="/user/get-user">
+                    <input type="hidden" id="email_id" name="email_id" value="{{this.email_id}}">
+                    <button type="submit" class="details_button">View Details</button>
+                </form></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+</head>
+<body>
+    <form action="/quiz/result" method="POST">
+                {{!--If startment runs if variable exists or isn't assigned to an eempty value--}}
+                {{#if show_rows}}
+                <script>
+                    let answers = []
+                </script>
+                <ul>
+                    {{!--In code below "each" interates over the "polls" property and "this.name" refers to the property inside the array of objects--}}
+                    {{#each show_rows}}
+                    <div class="container-quiz" id="messages">
+                        <p class="message__phone" id="userphone">{{@index}}: {{this.question}}</p>
+                        <input type="hidden" name="question_id" value={{this.question_id}}>
+                        <div>
+                            <input type="radio" id="Q{{@index}}_option1" name='a{{@index}}' value="a">
+                            <label for="Q{{@index}}_option1">{{this.option1}}</label><br>
+                        </div>
+                        <div>
+                            <input type="radio" id="Q{{@index}}_option2" name='a{{@index}}' value="b">
+                            <label for="Q{{@index}}_option2">{{this.option2}} </label><br>
+                        </div>
+                        <div>
+                            <input type="radio" id="Q{{@index}}_option3" name='a{{@index}}' value="c">
+                            <label for="Q{{@index}}_option3">{{this.option3}}</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="Q{{@index}}_option4" name='a{{@index}}' value="d">
+                            <label for="Q{{@index}}_option4">{{this.option4}}</label>
+                        </div>
+                    </div>
+                    {{/each}}
+                </ul>
+                {{!--Else startment runs if DOESN'T variable exist or IS assigned to an eempty value--}}
+                {{else}}
+                <p><em>No Result.</em></p>
+                {{/if}}
+                <div class="container-box">
+                    <input type="text" id="answers_id" name="answers_id" class="answers_id" hidden>
+                    <button id="submit" type="submit" >Submit</button>
+                </div>
+            </form>
+</body>
+<script>
+    document.getElementById('answers_id').value=[{{answers_id}}]    
+    console.log({{answers_id}})
+</script>
+</html>
